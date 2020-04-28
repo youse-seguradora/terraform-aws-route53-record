@@ -1,8 +1,3 @@
-## Managed By : CloudDrove
-## Copyright @ CloudDrove. All Right Reserved.
-
-# Module      : Route53 Record Set
-# Description : Terraform module to create Route53 record sets resource on AWS.
 resource "aws_route53_record" "default" {
   count                            = var.record_enabled && length(var.alias) == 0 ? 1 : 0
   zone_id                          = var.zone_id
@@ -16,8 +11,6 @@ resource "aws_route53_record" "default" {
   allow_overwrite                  = var.allow_overwrite
 }
 
-# Module      : Route53 Record Set
-# Description : Terraform module to create Route53 record sets resource on AWS.
 resource "aws_route53_record" "alias" {
   count                            = var.record_enabled && length(var.alias) > 0 ? 1 : 0
   zone_id                          = var.zone_id

@@ -1,3 +1,9 @@
-# Module      : Route53
-# Description : Terraform module to create Route53 resource on AWS for managing queue.
+output "name" {
+  description = "The record"
+  value       = aws_route53_record.default.*.name
+}
 
+output "fqdn" {
+  description = "The FQDN"
+  value       = aws_route53_record.default.*.fqdn
+}

@@ -1,5 +1,3 @@
-# Module      : Route53 table
-# Description : Terraform Route53 table module variables.
 variable "record_enabled" {
   type        = bool
   default     = true
@@ -8,19 +6,17 @@ variable "record_enabled" {
 
 variable "type" {
   type        = string
-  default     = ""
   description = "The record type. Valid values are A, AAAA, CAA, CNAME, MX, NAPTR, NS, PTR, SOA, SPF, SRV and TXT. "
 }
 
 variable "ttl" {
-  type        = string
-  default     = ""
+  type        = number
+  default     = 300
   description = "(Required for non-alias records) The TTL of the record."
 }
 
 variable "name" {
   type        = string
-  default     = ""
   description = "The name of the record."
 }
 
@@ -32,7 +28,7 @@ variable "values" {
 
 variable "set_identifier" {
   type        = string
-  default     = ""
+  default     = null
   description = "Unique identifier to differentiate records with routing policies from one another. Required if using failover, geolocation, latency, or weighted routing policies documented below."
 }
 
@@ -61,6 +57,5 @@ variable "allow_overwrite" {
 
 variable "zone_id" {
   type        = string
-  default     = ""
   description = "Zone ID."
 }
