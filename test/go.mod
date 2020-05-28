@@ -1,4 +1,4 @@
-module terraform-aws-iam
+module terraform-aws-route53-record
 
 go 1.14
 
