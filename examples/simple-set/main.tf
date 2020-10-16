@@ -15,7 +15,7 @@ module "route53_zone" {
 module "route53_record" {
   source = "../.."
 
-  name    = var.name
+  name    = [var.name]
   zone_id = module.route53_zone.zone_id
   type    = "A"
   ttl     = "3600"

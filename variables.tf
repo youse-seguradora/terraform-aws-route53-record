@@ -16,7 +16,7 @@ variable "ttl" {
 }
 
 variable "name" {
-  type        = string
+  type        = list(string)
   description = "The name of the record."
 }
 
