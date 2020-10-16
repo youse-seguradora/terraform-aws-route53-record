@@ -1,7 +1,7 @@
 resource "aws_route53_record" "default" {
-  count                            = var.record_enabled && length(var.alias) == 0 ? 1 : 0
+  count                            = var.record_enabled && length(var.alias) == 0 ? length(var.name) : 0
   zone_id                          = var.zone_id
-  name                             = var.name
+  name                             = element(var.name, count.index)
   type                             = var.type
   ttl                              = var.ttl
   records                          = split(",", var.values)
@@ -12,9 +12,9 @@ resource "aws_route53_record" "default" {
 }
 
 resource "aws_route53_record" "alias" {
-  count                            = var.record_enabled && length(var.alias) > 0 ? 1 : 0
+  count                            = var.record_enabled && length(var.alias) > 0 ? length(var.name) : 0
   zone_id                          = var.zone_id
-  name                             = var.name
+  name                             = element(var.name, count.index)
   type                             = var.type
   set_identifier                   = var.set_identifier
   health_check_id                  = var.health_check_id
